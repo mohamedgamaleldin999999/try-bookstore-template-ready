@@ -1,7 +1,43 @@
 import React from 'react';
+import BookList from './bookList';
+import BookForm from './BookForm'; // Make sure to import BookForm
 
-const Categories = () => (
-  <h2>Categories</h2>
-);
+class CategoriesPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: [
+        { id: 1, title: 'Book 1', author: 'Author 1' },
+        { id: 2, title: 'Book 2', author: 'Author 2' },
+        { id: 3, title: 'Book 3', author: 'Author 3' },
+      ],
+    };
+  }
 
-export default Categories;
+  handleDeleteBook = bookId => {
+    const updatedBooks = this.state.books.filter(book => book.id !== bookId);
+    this.setState({ books: updatedBooks });
+  };
+
+  handleCreateBook = newBook => {
+    const { books } = this.state;
+    const newId = books.length + 1;
+    const updatedBooks = [...books, { ...newBook, id: newId }];
+    this.setState({ books: updatedBooks });
+  };
+
+  render() {
+    const { books } = this.state;
+
+    return (
+      <div>
+        <h2>Categories</h2>
+        <BookList books={books} onDelete={this.handleDeleteBook} />
+        <h3>Add New Book</h3>
+        <BookForm onCreateBook={this.handleCreateBook} />
+      </div>
+    );
+  }
+}
+
+export default CategoriesPage;

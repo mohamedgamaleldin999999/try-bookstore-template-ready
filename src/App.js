@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Nav from './components/nav';
 import BookList from './components/bookList';
+import Categories from './components/categories';
 
 function App() {
   return (
