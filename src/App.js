@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <BrowserRouter>
-      <Navigation />
+      <Nav />
       <Routes>
         <Route path="/" element={<BookList />} />
         <Route path="/categories" element={<Categories />} />
